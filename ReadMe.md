@@ -10,5 +10,7 @@
      证件号：510265790128303
      姓名：张三
 
+证书文件在resource下面，请复制到本地与acp_sdk.properties里的证书目录对应
+
 测试URL：每次测试把订单号改一下,金额单位为分
 http://localhost:8080/TestUnionPay/test/tran?merId=777290058110048&txnAmt=1000&orderId=13232542423138
