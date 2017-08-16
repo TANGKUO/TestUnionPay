@@ -66,7 +66,7 @@ public class UnionPay {
         return AcpService.createAutoFormHtml(SDKConfig.getConfig().getFrontRequestUrl(), submitFromData, SDKConfig.getConfig().encoding);
     }
 
-    public static void settleFileDownLoad(String merId,String settleDate){
+    public static void settleFileDownLoad(String merId,String settleDate,String outPutDirectory){
         Map<String, String> data = new HashMap<String, String>();
 
         /***银联全渠道系统，产品参数，除了encoding自行选择外其他不需修改***/
@@ -93,7 +93,6 @@ public class UnionPay {
             if(AcpService.validate(rspData, SDKConfig.getConfig().encoding)){
                 String respCode = rspData.get("respCode");
                 if("00".equals(respCode)){
-                    String outPutDirectory ="d:\\";
                     // 交易成功，解析返回报文中的fileContent并落地
                     String zipFilePath = AcpService.deCodeFileContent(rspData,outPutDirectory,SDKConfig.getConfig().encoding);
                     //对落地的zip文件解压缩并解析

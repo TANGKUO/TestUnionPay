@@ -141,6 +141,12 @@ public class SDKConfig {
      */
     private String backUrl;
 
+    private Boolean isProxy;
+
+    private String host;
+
+    private String port;
+
     /*缴费相关地址*/
     private String jfFrontRequestUrl;
     private String jfBackRequestUrl;
@@ -555,6 +561,20 @@ public class SDKConfig {
         if (!SDKUtil.isEmpty(value)) {
             this.backUrl = value.trim();
         }
+
+        value = pro.getProperty("isProxy");
+        if(!SDKUtil.isEmpty(value)) {
+            this.isProxy = Boolean.getBoolean(value);
+        }
+
+        value = pro.getProperty("proxyIP");
+        if(!SDKUtil.isEmpty(value)){
+            this.host = value.trim();
+        }
+        value = pro.getProperty("port");
+        if(!SDKUtil.isEmpty(value)){
+            this.port = value.trim();
+        }
     }
 
 
@@ -844,6 +864,32 @@ public class SDKConfig {
 
     public void setRootCertPath(String rootCertPath) {
         this.rootCertPath = rootCertPath;
+    }
+
+
+
+    public Boolean getProxy() {
+        return isProxy;
+    }
+
+    public void setProxy(Boolean proxy) {
+        isProxy = proxy;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 
 }
